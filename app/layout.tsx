@@ -1,34 +1,28 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import './globals.css'
+import { Inter } from 'next/font/google'
+import Header from '@/components/Header'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ['latin'] })
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "My Portfolio Website",
-  description: "Hire me",
-};
+export const metadata = {
+  title: 'My MetaLab-Inspired Site',
+  description: 'A sleek Next.js site using Tailwind for a Metalab-like experience.',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={inter.className}>
+      <body className="bg-white text-gray-900 antialiased">
+        <Header />
         {children}
+        <footer className="mt-20 py-8 text-center text-sm text-gray-600">
+          © 2024 MyBrand. All Rights Reserved.
+        </footer>
       </body>
     </html>
-  );
+  )
 }
